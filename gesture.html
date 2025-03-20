@@ -1,0 +1,85 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <script type="module">
+        import('./components/gesture-box.js')
+    </script>
+    <style>
+        gesture-box {
+            display: block;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+<gesture-box
+        style="width: 1000px;height: 1000px"
+        on-swipe-up="handleSwipeUp"
+        on-swipe-down="handleSwipeDown"
+        on-swipe-left="handleSwipeLeft"
+        on-swipe-right="handleSwipeRight"
+        on-swipe-up-left="handleSwipeUpLeft"
+        on-swipe-up-right="handleSwipeUpRight"
+        on-swipe-down-left="handleSwipeDownLeft"
+        on-swipe-down-right="handleSwipeDownRight"
+        on-double-tap="handleDoubleTap"
+        on-long-press="handleLongPress"
+>
+</gesture-box>
+<p>滑动以上区域</p>
+<div
+        style="width: 1000px;height: 1000px"
+>
+</div>
+</body>
+<script>
+    // 示例处理函数
+    function handleSwipeUp(e) {
+        console.log('向上滑动', e);
+        e.element.style.background = '#e1f5fe';
+    }
+
+    function handleSwipeDown(e) {
+        console.log('向下滑动', e);
+        e.element.style.background = '#f1f8e9';
+    }
+
+    function handleSwipeLeft(e) {
+        console.log('向左滑动', e);
+        e.element.style.background = '#ffebee';
+    }
+
+    function handleSwipeRight(e) {
+        console.log('向右滑动', e);
+        e.element.style.background = '#f3e5f5';
+    }
+
+    function handleSwipeUpLeft(e) {
+        console.log('向左上滑动', e);
+        e.element.style.background = '#fff8e1';
+    }
+
+    function handleSwipeUpRight(e) {
+        console.log('向右上滑动', e);
+        e.element.style.background = '#e8f5e9';
+    }
+
+    function handleSwipeDownLeft(e) {
+        console.log('向左下滑动', e);
+        e.element.style.background = '#e0f7fa';
+    }
+
+    function handleSwipeDownRight(e) {
+        console.log('向右下滑动', e);
+        e.element.style.background = '#fbe9e7';
+    }
+
+    function handleDoubleTap() {
+        console.log('双击事件');
+    }
+
+    function handleLongPress() {
+        console.log('长按事件');
+    }
+</script>
+</html>

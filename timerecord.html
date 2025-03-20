@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="module">
+        // 导入自定义组件
+        // 可选：动态加载其他组件
+        import('./components/my-record2.js')
+    </script>
+</head>
+<body>
+<button onclick="start()">开始录制</button>
+<button onclick="stop()">停止录制</button>
+<button onclick="download()">下载</button>
+<button onclick="rpl()">回放</button>
+<input id="ifl" type="file"/>
+<time-record id="timer" frametime="500" max-states="1000" mode="auto">
+    <button id="button1" slot="undo" onclick="()=>{this.text='Clicked!'}">←</button>
+    <button slot="redo">→</button>
+    <!-- 任意内容 -->
+    <div contenteditable>可编辑区域</div>
+    <form>
+        <input type="text">
+        <select>
+            <option>A</option>
+            <option>B</option>
+        </select>
+    </form>
+</time-record>
+<!-- 页面中 -->
+<script>
+    function rpl(){
+        file=document.getElementById("ifl").files[0]
+        var fileReader = new FileReader();
+        fileReader.readAsText(file)
+        fileReader.onload=()=>{
+            e.replay(fileReader.result)
+        }
+    }
+    e=document.getElementById("timer")
+    function start(){
+        e.start()
+    }
+    function stop(){
+        e.stop()
+        download()
+        e.clear()
+    }
+    function download(){
+        let element = document.createElement('a');
+        element.setAttribute('href',
+            'data:text/plain;charset=utf-8,'
+            + e.generateJSON());
+        element.setAttribute('download', "timerecorder");
+        document.body.appendChild(element);
+        element.click();
+        document.body.removeChild(element);
+    }
+</script>
+</body>
+</html>

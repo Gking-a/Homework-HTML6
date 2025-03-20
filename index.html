@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>测试用例</title>
+    <style>
+
+    </style>
+    <!-- 使用 type="module" -->
+    <script type="module">
+        // 导入自定义组件
+
+        // 可选：动态加载其他组件
+        import('./components/AutoMediaAdapter.js')
+        import('./components/deep-layout.js')
+
+    </script>
+</head>
+<body>
+<time-machine max-states="1000" mode="auto">
+    <button slot="undo">←</button>
+    <button slot="redo">→</button>
+
+    <!-- 任意内容 -->
+    <div contenteditable>可编辑区域</div>
+    <form>
+        <input type="text">
+        <select>
+            <option>A</option>
+            <option>B</option>
+        </select>
+    </form>
+    <canvas width="400" height="300"></canvas>
+</time-machine>
+<parallax-container id="scene">
+    <div depth="0.5" axis="Y">
+        <img src="Untitled.png">
+
+    </div>
+    <div depth="0.3" offset="0" axis="XY">
+        <p style="font-size: 72px">测试文字</p>
+    </div>
+    <p style="font-size: 72px" depth="1" axis="Y">测试文字22222222</p>
+
+</parallax-container>
+<my-automedia
+        type="video/mp4"
+        src="77349788f1fab61c6ba5dc94ffa52cfc.mp4"
+        autoplay
+        controls
+        loop
+        muted
+        alt="替代文本"></my-automedia>
+</body>
+</html>
